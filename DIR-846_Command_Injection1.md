@@ -54,7 +54,7 @@ DIR846enFW100A53DLA-Retail.bin link https://la.dlink.com/la/ftp_download.php?arc
 
 #### Detail
 
-​	Since the CVE-2019-17510 vulnerability has not been patched and perfected /squashfs-root/www/HNAP1/control/ SetWizardConfig.php, you can also use \n and single quotes to bypass
+​	Since cve-2019-17510 vulnerability has not been patched and improved / squashfs root / www / hnap1 / control / setwizardconfig. In PHP, you can also use line breaks and backquotes to bypass
 
 <img src="./img/image-20211226104615847.png" alt="image-20211226104615847" style="zoom:50%;" />
 
