@@ -10,7 +10,7 @@ DIR846A1_FW100A43 link http://support.dlink.com.cn:9000/ProductInfo.aspx?m=DIR-8
 
 DIR846enFW100A53DLA-Retail.bin link https://la.dlink.com/la/ftp_download.php?arch=DIR-846/DIR846enFW100A53DLA-Retail.bin
 
-## Vulnerability1
+## Vulnerability1(CVE-2021-46315)
 
 #### Describe
 
@@ -47,7 +47,7 @@ DIR846enFW100A53DLA-Retail.bin link https://la.dlink.com/la/ftp_download.php?arc
 
 ​	The following data packets will cause the router to restart	<img src="./img/image-20211226102955168.png" alt="image-20211226102955168" style="zoom:50%;" />
 
-## Vulnerability2
+## Vulnerability2(CVE-2021-46315)
 #### Describe
 
 ​	HNAP1/control/SetWizardConfig.php in the latest version of D-Link Router DIR-846 DIR846A1_FW100A43.bin && DIR846enFW100A53DLA-Retail.bin  represents an injection vulnerability. Attackers can use this vulnerability to use "\n" or backticks in the shell metacharacters in the ssid0 or ssid1 parameters to cause arbitrary command execution.
@@ -83,7 +83,7 @@ Cookie: uid=fN5PwZCT; PrivateKey=B2488589E39C47E4F8349060E88008DE; PHPSESSID=620
 
 <img src="./img/image-20211226105603738.png" alt="image-20211226105603738" style="zoom:50%;" />
 
-## Vulnerability3
+## Vulnerability3(CVE-2021-46314)
 
 #### Describe
 
